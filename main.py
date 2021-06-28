@@ -7,13 +7,13 @@ from md2notion.upload import upload, convert, uploadBlock
 
 # Get data from github environment
 path = os.environ.get("GITHUB_EVENT_PATH")
-token = os.environ.get("NOTION_TOKEN")
-database_url = os.environ.get("DATABASE_URL")
+token = os.environ.get("I2N_NOTION_TOKEN")
+database_url = os.environ.get("I2N_DATABASE_URL")
 property_name = os.environ.get("PROPERTY_NAME","status")
-part_property_name = os.environ.get("PART_PROPERTY_NAME","part")
-part_name = os.environ.get("PART_NAME","admin")
-state_open = os.environ.get("STATE_OPEN","open")
-state_closed = os.environ.get("STATE_CLOSED","closed")
+part_property_name = os.environ.get("I2N_PART_PROPERTY_NAME","part")
+part_name = os.environ.get("I2N_PART_NAME","admin")
+state_open = os.environ.get("I2N_STATE_OPEN","open")
+state_closed = os.environ.get("I2N_STATE_CLOSED","closed")
 
 
 # Get the event string from github
@@ -38,6 +38,7 @@ def main():
     issue_number = github_event_json["issue"]["number"]
     issue_title = github_event_json["issue"]["title"]
     issue_link = github_event_json["issue"]["html_url"]
+    issue_assigner = github_event_json["issue"]["assigner"]
 
     print("action_type is",action_type)
 
@@ -57,9 +58,8 @@ def main():
             row.children.add_new(BookmarkBlock, title=issue_title, link=issue_link)
             upload_body_with_markdown(row)
 
-        elif action_type == "closed":
-            setattr(row,property_name,state_closed)
-            setattr(row,part_property_name,part_name)
+        elif action_type == "assigned":
+            setattr(row,'assigned',issue_assigner)
 
         elif action_type == "deleted":
             pass

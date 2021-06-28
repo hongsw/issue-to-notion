@@ -9,10 +9,10 @@ jobs:
       - name: Notion Card Creator
         uses: hongsw/issue-to-notion@v1.1.5
         env:
-          NOTION_TOKEN: ${{ secrets.I2N_NOTION_TOKEN }}
-          DATABASE_URL: ${{ secrets.I2N_DATABASE_URL }}
-          PROPERTY_NAME : status
-          PART_PROPERTY_NAME : ${{ secrets.I2N_PART_PROPERTY_NAME }}
-          PART_NAME : ${{ secrets.I2N_PART_NAME }}
-          STATE_OPEN : ${{ secrets.I2N_STATE_OPEN }}
-          STATE_CLOSED : ${{ secrets.I2N_STATE_CLOSED }}
+          I2N_NOTION_TOKEN: ${{ secrets.I2N_NOTION_TOKEN }}
+          I2N_DATABASE_URL: ${{ secrets.I2N_DATABASE_URL }}
+          I2N_PROPERTY_NAME : ${{ secrets.I2N_PROPERTY_NAME }}
+          I2N_PART_PROPERTY_NAME : ${{ secrets.I2N_PART_PROPERTY_NAME }}
+          I2N_PART_NAME : ${{ secrets.I2N_PART_NAME }}
+          I2N_STATE_OPEN : ${{ secrets.I2N_STATE_OPEN }}
+          I2N_STATE_CLOSED : ${{ secrets.I2N_STATE_CLOSED }}

@@ -7,12 +7,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Notion Card Creator
-        uses: hongsw/issue-to-notion@v1.1.1
+        uses: hongsw/issue-to-notion@v1.1.3
         env:
           NOTION_TOKEN: ${{ secrets.I2N_NOTION_TOKEN }}
           DATABASE_URL: ${{ secrets.I2N_DATABASE_URL }}
           PROPERTY_NAME : status
           PART_PROPERTY_NAME : ${{ secrets.I2N_PART_PROPERTY_NAME }}
           PART_NAME : ${{ secrets.I2N_PART_NAME }}
-          STATE_OPEN : open
-          STATE_CLOSED : closed
+          STATE_OPEN : ${{ secrets.I2N_STATE_OPEN }}
+          STATE_CLOSED : ${{ secrets.I2N_STATE_CLOSED }}

@@ -38,7 +38,6 @@ def main():
     issue_number = github_event_json["issue"]["number"]
     issue_title = github_event_json["issue"]["title"]
     issue_link = github_event_json["issue"]["html_url"]
-    issue_assigner = github_event_json["issue"]["assigner"]
 
     print("action_type is",action_type)
 
@@ -59,6 +58,7 @@ def main():
             upload_body_with_markdown(row)
 
         elif action_type == "assigned":
+            issue_assigner = github_event_json["issue"]["assigner"]
             setattr(row,'assigned',issue_assigner)
 
         elif action_type == "deleted":

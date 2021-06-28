@@ -10,6 +10,8 @@ path = os.environ.get("GITHUB_EVENT_PATH")
 token = os.environ.get("NOTION_TOKEN")
 database_url = os.environ.get("DATABASE_URL")
 property_name = os.environ.get("PROPERTY_NAME","status")
+part_property_name = os.environ.get("PART_PROPERTY_NAME","part")
+part_name = os.environ.get("PART_NAME","admin")
 state_open = os.environ.get("STATE_OPEN","open")
 state_closed = os.environ.get("STATE_CLOSED","closed")
 
@@ -57,12 +59,14 @@ def main():
 
         elif action_type == "closed":
             setattr(row,property_name,state_closed)
+            setattr(row,part_property_name,part_name)
 
         elif action_type == "deleted":
             pass
         # TODO
         elif action_type == "reopened":
             setattr(row,property_name,state_open)
+            setattr(row,part_property_name,part_name)
 
         elif action_type == "labeled" or action_type == "unlabeled":
             pass

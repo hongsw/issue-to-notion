@@ -9,7 +9,7 @@ from md2notion.upload import upload, convert, uploadBlock
 path = os.environ.get("GITHUB_EVENT_PATH")
 token = os.environ.get("I2N_NOTION_TOKEN")
 database_url = os.environ.get("I2N_DATABASE_URL")
-property_name = os.environ.get("PROPERTY_NAME","status")
+property_name = os.environ.get("I2N_PROPERTY_NAME","status")
 part_property_name = os.environ.get("I2N_PART_PROPERTY_NAME","part")
 part_name = os.environ.get("I2N_PART_NAME","admin")
 state_open = os.environ.get("I2N_STATE_OPEN","open")

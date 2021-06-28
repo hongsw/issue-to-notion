@@ -10,7 +10,7 @@ jobs:
         uses: hongsw/issue-to-notion@v1.1.1
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          DATABASE_URL: https://www.notion.so/koreaspacedata/21f97679430842019df301b6a3b337d6?v=51c206fbe291472e8c27e1d8b8a897c6
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
           PROPERTY_NAME : state
           STATE_OPEN : open
           STATE_CLOSED : closed
